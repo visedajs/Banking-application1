@@ -15,35 +15,16 @@ namespace BankingApp_202101
             accounts.Add(new BankAccount("DDB123456790", "Anna Kurnikova", 10000000, "RUB"));
             accounts.Add(new BankAccount("DDB123456791", "Jenifer Lopez", 200, "USD"));
 
+            accounts[0].AddToBalance(1000000, DateTime.Now, "donation");
+
+            accounts[1].TakeFromBalance(149284, DateTime.Now, "New car");
+            accounts[1].TakeFromBalance(900000000, DateTime.Now, "New makeup");
+
             foreach (var account in accounts)
             {
                 account.Print();
+                account.PrintTransactions();
             }
         }
-    }
-
-    public class BankAccount
-    {
-        public string Number { get; }
-        public string Owner { get; }
-        public decimal Balance { get; }
-        public string Currency { get; }
-        public DateTime DateCreated { get; }
-
-        public BankAccount(string number, string owner, decimal balance, string currency)
-        {
-            this.Number = number;
-            this.Owner = owner;
-            this.Balance = balance;
-            this.Currency = currency;
-            this.DateCreated = DateTime.Now;
-        }
-
-        public void Print()
-        {
-            Console.WriteLine($"Account {this.Number} belongs to {this.Owner} and has a balance of {this.Balance} {this.Currency}");
-        }
-
-
     }
 }
